@@ -52,7 +52,7 @@ const VitePluginWebpAndPath = (options = {}) => {
                     const fileContent = fs.readFileSync(filePath, "utf-8");
                     let updatedContent = fileContent;
                     for (const ext of imgExtensionsArray) {
-                        const regex = new RegExp(`^(?!.*//).*\\.${ext}`, "g");
+                        const regex = new RegExp(`(?<!https?:\\/\\/[^"]*)\\.${ext}`, "g");
                         updatedContent = updatedContent.replace(regex, ".webp");
                     }
                     fs.writeFileSync(filePath, updatedContent);

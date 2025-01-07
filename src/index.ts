@@ -82,7 +82,7 @@ const VitePluginWebpAndPath = (options: Options = {}) => {
           let updatedContent: string = fileContent;
 
           for (const ext of imgExtensionsArray) {
-            const regex: RegExp = new RegExp(`^(?!.*//).*\\.${ext}`, "g");
+            const regex = new RegExp(`(?<!https?:\\/\\/[^"]*)\\.${ext}`, "g");
             updatedContent = updatedContent.replace(regex, ".webp");
           }
 
